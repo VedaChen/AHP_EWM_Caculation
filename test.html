@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AHP-EWM 计算模块测试</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #007AFF 0%, #0051D5 100%);
+            color: white;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .content-area {
+            padding: 24px;
+        }
+
+        .intro-text {
+            font-size: 14px;
+            color: #8e8e93;
+            margin-bottom: 20px;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .method-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .method-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            border: 2px solid #e5e5ea;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .method-card:hover {
+            border-color: #007AFF;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,122,255,0.15);
+        }
+
+        .method-card:active {
+            transform: translateY(0);
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 14px;
+            color: #fff;
+            margin-right: 16px;
+            flex-shrink: 0;
+        }
+
+        .ahp-icon {
+            background: linear-gradient(135deg, #007AFF 0%, #0051D5 100%);
+        }
+
+        .ewm-icon {
+            background: linear-gradient(135deg, #34C759 0%, #2AB650 100%);
+        }
+
+        .fusion-icon {
+            background: linear-gradient(135deg, #FF9500 0%, #E08300 100%);
+        }
+
+        .card-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: #1d1d1f;
+        }
+
+        .card-desc {
+            font-size: 13px;
+            color: #8e8e93;
+            line-height: 1.4;
+        }
+
+        .arrow {
+            font-size: 16px;
+            color: #c7c7cc;
+            margin-left: 8px;
+        }
+
+        .back-button {
+            background: #f4f4f5;
+            color: #606266;
+            border: 1px solid #dcdfe6;
+            padding: 8px 16px;
+            font-size: 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 500;
+            margin-top: 20px;
+        }
+
+        .back-button:hover {
+            background-color: #ecf5ff;
+            color: #409eff;
+            border-color: #c6e2ff;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(64, 158, 255, 0.2);
+        }
+
+        .status-message {
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .status-success {
+            background: #f0f9eb;
+            color: #67c23a;
+            border: 1px solid #c2e7b0;
+        }
+
+        .status-info {
+            background: #f4f4f5;
+            color: #909399;
+            border: 1px solid #d3d4d6;
+        }
+
+        .demo-section {
+            margin-top: 24px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border: 1px dashed #dee2e6;
+        }
+
+        .demo-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .demo-text {
+            font-size: 13px;
+            color: #6c757d;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 16px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background: #007AFF;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #0051D5;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,122,255,0.3);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .feature-list {
+            margin-top: 16px;
+            text-align: left;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+            font-size: 13px;
+            color: #495057;
+        }
+
+        .feature-item::before {
+            content: "✓";
+            color: #67c23a;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .success-check {
+            color: #67c23a;
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>AHP-EWM 计算模块测试</h1>
+            <p>层次分析法与熵值法权重计算系统</p>
+        </div>
+
+        <div class="content-area">
+            <!-- 主选择界面 -->
+            <div id="mainView" class="fade-in">
+                <div class="intro-text">请选择计算方法</div>
+                
+                <div class="method-cards">
+                    <div class="method-card" onclick="selectMethod('ahp')">
+                        <div class="card-icon ahp-icon">AHP</div>
+                        <div class="card-info">
+                            <div class="card-title">AHP层次分析法</div>
+                            <div class="card-desc">基于判断矩阵计算权重</div>
+                        </div>
+                        <div class="arrow">></div>
+                    </div>
+
+                    <div class="method-card" onclick="selectMethod('ewm')">
+                        <div class="card-icon ewm-icon">熵</div>
+                        <div class="card-info">
+                            <div class="card-title">熵值法</div>
+                            <div class="card-desc">基于数据差异计算权重</div>
+                        </div>
+                        <div class="arrow">></div>
+                    </div>
+
+                    <div class="method-card" onclick="selectMethod('fusion')">
+                        <div class="card-icon fusion-icon">融合</div>
+                        <div class="card-info">
+                            <div class="card-title">AHP-熵值法融合</div>
+                            <div class="card-desc">结合主观与客观权重</div>
+                        </div>
+                        <div class="arrow">></div>
+                    </div>
+                </div>
+
+                <div class="demo-section">
+                    <div class="demo-title">功能演示</div>
+                    <div class="demo-text">
+                        点击上方卡片可测试组件切换和返回功能
+                    </div>
+                    <div class="feature-list">
+                        <div class="feature-item">组件间切换功能</div>
+                        <div class="feature-item">返回按钮功能</div>
+                        <div class="feature-item">状态管理测试</div>
+                        <div class="feature-item">事件通信机制</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 计算组件视图 -->
+            <div id="calculationView" class="hidden">
+                <div id="componentContainer"></div>
+                <button class="back-button" onclick="goBack()">
+                    ← 返回方法选择
+                </button>
+            </div>
+
+            <!-- 状态消息区域 -->
+            <div id="statusArea"></div>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 0;
+        let selectedMethod = '';
+
+        // 模拟组件模板
+        const componentTemplates = {
+            ahp: `
+                <div class="fade-in">
+                    <div class="success-check">✓</div>
+                    <h3 style="text-align: center; margin-bottom: 16px; color: #1d1d1f;">AHP 层次分析法组件</h3>
+                    <div class="demo-section">
+                        <div class="demo-title">功能说明</div>
+                        <div class="feature-list">
+                            <div class="feature-item">Excel 文件上传与解析</div>
+                            <div class="feature-item">判断矩阵处理</div>
+                            <div class="feature-item">四步计算过程展示</div>
+                            <div class="feature-item">一致性检验</div>
+                            <div class="feature-item">最终权重排序</div>
+                        </div>
+                    </div>
+                    <div class="status-message status-info">
+                        当前：AHP 组件已加载，返回功能正常
+                    </div>
+                </div>
+            `,
+            ewm: `
+                <div class="fade-in">
+                    <div class="success-check">✓</div>
+                    <h3 style="text-align: center; margin-bottom: 16px; color: #1d1d1f;">熵值法组件</h3>
+                    <div class="demo-section">
+                        <div class="demo-title">功能说明</div>
+                        <div class="feature-list">
+                            <div class="feature-item">历史数据文件上传</div>
+                            <div class="feature-item">指标说明匹配</div>
+                            <div class="feature-item">极差标准化处理</div>
+                            <div class="feature-item">信息熵计算</div>
+                            <div class="feature-item">权重排序输出</div>
+                        </div>
+                    </div>
+                    <div class="status-message status-info">
+                        当前：熵值法组件已加载，返回功能正常
+                    </div>
+                </div>
+            `,
+            fusion: `
+                <div class="fade-in">
+                    <div class="success-check">✓</div>
+                    <h3 style="text-align: center; margin-bottom: 16px; color: #1d1d1f;">AHP-熵值法融合组件</h3>
+                    <div class="demo-section">
+                        <div class="demo-title">功能说明</div>
+                        <div class="feature-list">
+                            <div class="feature-item">AHP 权重计算</div>
+                            <div class="feature-item">熵值法权重计算</div>
+                            <div class="feature-item">融合权重系数调整</div>
+                            <div class="feature-item">滑块控制界面</div>
+                            <div class="feature-item">最终融合结果</div>
+                        </div>
+                    </div>
+                    <div class="status-message status-info">
+                        当前：融合计算组件已加载，返回功能正常
+                    </div>
+                </div>
+            `
+        };
+
+        function selectMethod(method) {
+            selectedMethod = method;
+            currentStep = 1;
+
+            // 隐藏主界面，显示计算组件
+            document.getElementById('mainView').classList.add('hidden');
+            document.getElementById('calculationView').classList.remove('hidden');
+            
+            // 加载对应组件
+            const container = document.getElementById('componentContainer');
+            container.innerHTML = componentTemplates[method];
+
+            // 显示状态消息
+            showStatus(`成功切换到 ${getMethodDisplayName(method)} 组件`, 'success');
+            
+            console.log(`选择了方法: ${method}, 当前步骤: ${currentStep}`);
+        }
+
+        function goBack() {
+            currentStep = 0;
+            selectedMethod = '';
+
+            // 显示主界面，隐藏计算组件
+            document.getElementById('calculationView').classList.add('hidden');
+            document.getElementById('mainView').classList.remove('hidden');
+            document.getElementById('mainView').classList.add('fade-in');
+
+            // 清空容器
+            document.getElementById('componentContainer').innerHTML = '';
+
+            // 显示返回成功消息
+            showStatus('已成功返回方法选择界面', 'info');
+            
+            console.log('返回到主界面');
+        }
+
+        function getMethodDisplayName(method) {
+            const names = {
+                'ahp': 'AHP层次分析法',
+                'ewm': '熵值法',
+                'fusion': 'AHP-熵值法融合'
+            };
+            return names[method] || method;
+        }
+
+        function showStatus(message, type) {
+            const statusArea = document.getElementById('statusArea');
+            const statusDiv = document.createElement('div');
+            
+            const typeClass = type === 'success' ? 'status-success' : 'status-info';
+            statusDiv.className = `status-message ${typeClass} fade-in`;
+            statusDiv.textContent = message;
+            
+            statusArea.innerHTML = '';
+            statusArea.appendChild(statusDiv);
+
+            // 3秒后自动清除
+            setTimeout(() => {
+                if (statusArea.contains(statusDiv)) {
+                    statusArea.removeChild(statusDiv);
+                }
+            }, 3000);
+        }
+
+        // 页面加载完成后的初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('AHP-EWM 测试页面已加载');
+            console.log('组件功能正常，返回机制已实现');
+            showStatus('测试页面加载完成，所有功能准备就绪', 'info');
+        });
+
+        // 全局错误处理
+        window.addEventListener('error', function(e) {
+            console.error('发生错误:', e.error);
+            showStatus('发生错误: ' + e.message, 'error');
+        });
+    </script>
+</body>
+</html>
