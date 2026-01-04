@@ -1,4 +1,4 @@
-/* 重置所有默认样式，确保 iOS 18 风格可以完全控制 */
+/* 现代化设计系统重置 */
 * {
   margin: 0;
   padding: 0;
@@ -8,51 +8,127 @@
 /* 基础字体和渲染优化 */
 :root {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-  line-height: 1.5;
+  line-height: 1.6;
   font-weight: 400;
-  
-  /* 禁用默认的颜色方案，使用我们的渐变背景 */
-  color-scheme: light;
-  
+
   /* 字体渲染优化 */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
-  /* CSS 自定义属性，便于主题管理 */
-  --ios-primary-blue: #007AFF;
-  --ios-primary-green: #34C759;
-  --ios-primary-orange: #FF9500;
-  --ios-text-primary: #1d1d1f;
-  --ios-text-secondary: #86868b;
-  --ios-background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
-  --ios-card-bg: rgba(255, 255, 255, 0.85);
-  --ios-nav-bg: rgba(255, 255, 255, 0.6);
-  --ios-border: rgba(255, 255, 255, 0.6);
-  --ios-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  --ios-radius-card: 16px;
-  --ios-radius-control: 12px;
+
+  /* 现代化设计系统 - 玻璃拟态风格 */
+
+  /* 主色调 - 专业蓝紫色系 */
+  --primary-50: #eff6ff;
+  --primary-100: #dbeafe;
+  --primary-200: #bfdbfe;
+  --primary-300: #93c5fd;
+  --primary-400: #60a5fa;
+  --primary-500: #3b82f6;
+  --primary-600: #2563eb;
+  --primary-700: #1d4ed8;
+  --primary-800: #1e40af;
+  --primary-900: #1e3a8a;
+
+  /* 辅助色 - 翡翠绿 */
+  --success-500: #10b981;
+  --success-600: #059669;
+
+  /* 警告色 - 琥珀橙 */
+  --warning-500: #f59e0b;
+  --warning-600: #d97706;
+
+  /* 危险色 - 红色 */
+  --danger-500: #ef4444;
+  --danger-600: #dc2626;
+
+  /* 中性色 */
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+
+  /* 背景渐变 - 现代柔和渐变 */
+  --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --bg-surface: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+  --bg-surface-dark: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+
+  /* 卡片样式 - 玻璃拟态 */
+  --card-bg: rgba(255, 255, 255, 0.95);
+  --card-bg-hover: rgba(255, 255, 255, 0.98);
+  --card-border: rgba(255, 255, 255, 0.2);
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --card-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --card-shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  /* 圆角系统 */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+
+  /* 间距系统 */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+
+  /* 字体大小系统 */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+
+  /* 动画时长 */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 350ms;
+
+  /* 暗色模式变量 */
+  --dark-card-bg: rgba(30, 41, 59, 0.85);
+  --dark-card-bg-hover: rgba(30, 41, 59, 0.95);
+  --dark-card-border: rgba(255, 255, 255, 0.1);
+  --dark-text-primary: #f1f5f9;
+  --dark-text-secondary: #cbd5e1;
 }
 
 /* 重置链接样式 */
 a {
-  color: var(--ios-primary-blue);
+  color: var(--primary-600);
   text-decoration: none;
   font-weight: 500;
+  transition: color var(--duration-fast) ease;
 }
 
 a:hover {
+  color: var(--primary-700);
   text-decoration: underline;
 }
 
-/* 重置按钮样式 - 确保不会干扰自定义按钮 */
+/* 按钮基础样式重置 */
 button {
   border: none;
   background: none;
   cursor: pointer;
   font-family: inherit;
-  transition: none;
+  transition: all var(--duration-normal) cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 0;
   padding: 0;
   margin: 0;
@@ -60,15 +136,13 @@ button {
   text-align: left;
 }
 
-button:hover,
-button:focus,
 button:focus-visible {
-  border: none;
-  outline: none;
-  background: none;
+  outline: 2px solid var(--primary-500);
+  outline-offset: 2px;
+  border-radius: var(--radius-md);
 }
 
-/* 重置所有表单元素 */
+/* 表单元素重置 */
 input, textarea, select {
   font-family: inherit;
   border: none;
@@ -78,90 +152,90 @@ input, textarea, select {
   outline: none;
 }
 
-/* 重置标题样式 */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 600;
-  margin: 0;
-  padding: 0;
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--primary-500);
+  outline-offset: 2px;
+  border-radius: var(--radius-md);
 }
 
-/* 重置段落 */
+/* 标题样式 */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+  line-height: 1.2;
+}
+
+/* 段落 */
 p {
   margin: 0;
   padding: 0;
 }
 
-/* 重置列表 */
+/* 列表 */
 ul, ol, li {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-/* 重置表格 */
+/* 表格 */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* 重置图片 */
+/* 图片 */
 img {
   max-width: 100%;
   height: auto;
   border: none;
 }
 
-/* 基础 body 样式 - 由 App.vue 控制，这里只做最小重置 */
+/* Body 基础样式 */
 body {
   margin: 0;
   padding: 0;
   width: 100%;
   min-height: 100vh;
   overflow-x: hidden;
-  background: var(--ios-background);
+  background: var(--bg-surface);
+  color: var(--gray-900);
 }
 
-/* 滚动条样式 - iOS 风格 */
+/* 现代化滚动条样式 */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
   background: transparent;
+  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
+  background: var(--gray-300);
+  border-radius: 5px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.3);
+  background: var(--gray-400);
+  border: 2px solid transparent;
+  background-clip: padding-box;
 }
 
 /* 选择文本样式 */
 ::selection {
-  background: rgba(0, 122, 255, 0.2);
-  color: var(--ios-text-primary);
+  background: var(--primary-200);
+  color: var(--primary-900);
 }
 
-/* 焦点样式 - 使用 iOS 风格 */
-:focus-visible {
-  outline: 2px solid var(--ios-primary-blue);
-  outline-offset: 2px;
-}
-
-/* 移除默认的 focus 边框 */
-button:focus-visible,
-input:focus-visible,
-select:focus-visible,
-textarea:focus-visible {
-  outline: 2px solid var(--ios-primary-blue);
-  outline-offset: 2px;
-}
-
-/* 禁用用户选择（可选，根据需求） */
+/* 禁用用户选择（可选） */
 .unselectable {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -169,7 +243,48 @@ textarea:focus-visible {
   user-select: none;
 }
 
-/* 响应式字体大小 */
+/* 现代化动画系统 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* 响应式设计 - 移动优先 */
 @media (max-width: 768px) {
   :root {
     font-size: 16px;
@@ -182,15 +297,42 @@ textarea:focus-visible {
   }
 }
 
-/* 暗色模式支持 - 预留接口 */
+/* 暗色模式支持 */
 @media (prefers-color-scheme: dark) {
   :root {
-    --ios-text-primary: #f5f5f7;
-    --ios-text-secondary: #98989d;
-    --ios-background: linear-gradient(135deg, #1d1d1f 0%, #2c2c2e 100%);
-    --ios-card-bg: rgba(44, 44, 46, 0.7);
-    --ios-nav-bg: rgba(28, 28, 30, 0.6);
-    --ios-border: rgba(255, 255, 255, 0.1);
-    --ios-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --bg-surface: var(--bg-surface-dark);
+    --card-bg: var(--dark-card-bg);
+    --card-bg-hover: var(--dark-card-bg-hover);
+    --card-border: var(--dark-card-border);
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+    --card-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+  }
+
+  body {
+    color: var(--dark-text-primary);
+  }
+
+  /* 链接在暗色模式下 */
+  a {
+    color: var(--primary-400);
+  }
+
+  a:hover {
+    color: var(--primary-300);
+  }
+
+  /* 选择文本在暗色模式下 */
+  ::selection {
+    background: var(--primary-700);
+    color: var(--primary-100);
+  }
+
+  /* 滚动条在暗色模式下 */
+  ::-webkit-scrollbar-thumb {
+    background: var(--gray-600);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--gray-500);
   }
 }

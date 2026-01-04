@@ -14,21 +14,33 @@
       <!-- Navigation Bar -->
       <nav class="nav-bar" role="navigation" aria-label="主导航">
         <div class="nav-content">
-          <div class="nav-title">AHP-熵值法权重计算平台</div>
+          <div class="nav-brand">
+            <div class="brand-text">
+              <div class="brand-title">AHP-EWM 权重计算平台</div>
+            </div>
+          </div>
         </div>
       </nav>
 
       <!-- Main Content -->
       <main class="main-content" role="main">
-        <div class="section-header">
-          <h1 class="title">选择计算方法</h1>
-          <p class="subtitle">请选择适合您需求的权重计算方法</p>
+        <!-- Hero Section -->
+        <div class="hero-section">
+          <div class="hero-content">
+            <h1 class="hero-title">
+              <span class="title-highlight">选择计算方法</span>
+            </h1>
+            <p class="hero-subtitle">基于层次分析法与熵值法的专业权重计算工具</p>
+          </div>
+          <div class="hero-decoration">
+            <div class="decoration-circle"></div>
+          </div>
         </div>
 
         <!-- Method Cards Grid -->
         <div class="method-grid" role="list" aria-label="计算方法列表">
-          <div 
-            class="method-card" 
+          <div
+            class="method-card"
             role="listitem"
             tabindex="0"
             @click="selectMethod('ahp')"
@@ -39,8 +51,11 @@
             :class="{ 'is-active': touchActive }"
             aria-label="AHP层次分析法，适用于定性分析场景"
           >
-            <div class="card-icon ahp-icon" aria-hidden="true">
-              <span class="icon-text">AHP</span>
+            <div class="card-header">
+              <div class="card-icon ahp-icon" aria-hidden="true">
+                <span class="icon-text">AHP</span>
+              </div>
+              <div class="card-badge">推荐</div>
             </div>
             <div class="card-content">
               <div class="card-title">AHP层次分析法</div>
@@ -51,11 +66,14 @@
                 <span class="tag">一致性检验</span>
               </div>
             </div>
-            <div class="card-arrow" aria-hidden="true">›</div>
+            <div class="card-footer">
+              <span class="card-action">开始计算</span>
+              <div class="card-arrow">→</div>
+            </div>
           </div>
 
-          <div 
-            class="method-card" 
+          <div
+            class="method-card"
             role="listitem"
             tabindex="0"
             @click="selectMethod('ewm')"
@@ -66,8 +84,11 @@
             :class="{ 'is-active': touchActive }"
             aria-label="熵值法，适用于定量分析场景"
           >
-            <div class="card-icon ewm-icon" aria-hidden="true">
-              <span class="icon-text">熵</span>
+            <div class="card-header">
+              <div class="card-icon ewm-icon" aria-hidden="true">
+                <span class="icon-text">熵</span>
+              </div>
+              <div class="card-badge">客观</div>
             </div>
             <div class="card-content">
               <div class="card-title">熵值法</div>
@@ -78,11 +99,14 @@
                 <span class="tag">差异分析</span>
               </div>
             </div>
-            <div class="card-arrow" aria-hidden="true">›</div>
+            <div class="card-footer">
+              <span class="card-action">开始计算</span>
+              <div class="card-arrow">→</div>
+            </div>
           </div>
 
-          <div 
-            class="method-card" 
+          <div
+            class="method-card"
             role="listitem"
             tabindex="0"
             @click="selectMethod('fusion')"
@@ -93,8 +117,11 @@
             :class="{ 'is-active': touchActive }"
             aria-label="AHP-熵值法融合，结合主观判断与客观数据"
           >
-            <div class="card-icon fusion-icon" aria-hidden="true">
-              <span class="icon-text">融合</span>
+            <div class="card-header">
+              <div class="card-icon fusion-icon" aria-hidden="true">
+                <span class="icon-text">融合</span>
+              </div>
+              <div class="card-badge">综合</div>
             </div>
             <div class="card-content">
               <div class="card-title">AHP-熵值法融合</div>
@@ -105,20 +132,35 @@
                 <span class="tag">优化调整</span>
               </div>
             </div>
-            <div class="card-arrow" aria-hidden="true">›</div>
+            <div class="card-footer">
+              <span class="card-action">开始计算</span>
+              <div class="card-arrow">→</div>
+            </div>
           </div>
         </div>
 
         <!-- Info Section -->
         <div class="info-section" role="region" aria-label="使用提示">
-          <div class="info-card">
-            <div class="info-icon" aria-hidden="true">💡</div>
-            <div class="info-text">
-              <div class="info-title">使用提示</div>
-              <div class="info-list">
-                <div>• AHP适用于专家打分、多准则决策场景</div>
-                <div>• 熵值法适用于数据完整、需要客观赋权的场景</div>
-                <div>• 融合方法可兼顾主观经验与客观数据优势</div>
+          <div class="info-grid">
+            <div class="info-card">
+              <div class="info-icon" aria-hidden="true">🎯</div>
+              <div class="info-content">
+                <div class="info-title">AHP适用场景</div>
+                <div class="info-text">专家打分、多准则决策、定性分析</div>
+              </div>
+            </div>
+            <div class="info-card">
+              <div class="info-icon" aria-hidden="true">📈</div>
+              <div class="info-content">
+                <div class="info-title">熵值法适用场景</div>
+                <div class="info-text">数据完整、客观赋权、定量分析</div>
+              </div>
+            </div>
+            <div class="info-card">
+              <div class="info-icon" aria-hidden="true">⚡</div>
+              <div class="info-content">
+                <div class="info-title">融合方法优势</div>
+                <div class="info-text">兼顾主客观优势，结果更全面</div>
               </div>
             </div>
           </div>
@@ -131,8 +173,8 @@
       <div class="component-wrapper">
         <!-- 返回按钮 -->
         <div class="back-button-container">
-          <button 
-            class="back-button" 
+          <button
+            class="back-button"
             @click="handleBack"
             aria-label="返回选择页面"
           >
@@ -145,12 +187,12 @@
         <div v-if="selectedMethod === 'ahp'" class="component-container">
           <AHP @back="handleBackFromChild" />
         </div>
-        
+
         <!-- 熵值法组件 -->
         <div v-if="selectedMethod === 'ewm'" class="component-container">
           <EWM @back="handleBackFromChild" />
         </div>
-        
+
         <!-- 融合计算组件 -->
         <div v-if="selectedMethod === 'fusion'" class="component-container">
           <AHP_EWM @back="handleBackFromChild" />
@@ -279,73 +321,76 @@ defineExpose({
 /* 主容器 */
 .content-area {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+  background: transparent;
   position: relative;
   overflow-x: hidden;
 }
 
-/* 加载状态覆盖层 */
+/* 加载状态覆盖层 - 玻璃拟态 */
 .loading-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  animation: fadeIn 0.3s ease-out;
+  animation: fadeIn var(--duration-normal) ease-out;
 }
 
 .loading-content {
   text-align: center;
-  padding: 2rem;
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  min-width: 280px;
+  padding: var(--space-8);
+  background: var(--card-bg);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--card-shadow-lg);
+  border: 1px solid var(--card-border);
+  min-width: 320px;
+  animation: slideUp var(--duration-normal) ease-out;
 }
 
 .loading-spinner {
-  width: 48px;
-  height: 48px;
-  border: 3px solid #e5e7eb;
-  border-top: 3px solid #3b82f6;
+  width: 56px;
+  height: 56px;
+  border: 3px solid var(--gray-200);
+  border-top: 3px solid var(--primary-500);
   border-radius: 50%;
-  margin: 0 auto 1rem;
+  margin: 0 auto var(--space-4);
   animation: spin 1s linear infinite;
 }
 
 .loading-text {
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: #1f2937;
-  margin-bottom: 0.5rem;
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: var(--space-2);
 }
 
 .loading-subtext {
-  font-size: 0.875rem;
-  color: #6b7280;
+  font-size: var(--text-sm);
+  color: var(--gray-500);
 }
 
 /* 步骤容器 */
 .step-container {
   min-height: 100vh;
-  animation: fadeIn 0.5s ease-out;
+  animation: fadeIn var(--duration-slow) ease-out;
 }
 
 .step-container.fade-in {
-  animation: fadeIn 0.5s ease-out;
+  animation: fadeIn var(--duration-slow) ease-out;
 }
 
-/* 导航栏 */
+/* 导航栏 - 玻璃拟态 */
 .nav-bar {
-  background: white;
-  border-bottom: 1px solid #e5e7eb;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -354,22 +399,42 @@ defineExpose({
 .nav-content {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1.25rem 2rem;
+  padding: var(--space-6) var(--space-8);
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.nav-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #1f2937;
-  letter-spacing: -0.025em;
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
 }
 
-.nav-subtitle {
-  font-size: 0.875rem;
-  color: #6b7280;
+.brand-icon {
+  font-size: 2rem;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.brand-title {
+  font-size: var(--text-xl);
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary-600), var(--primary-800));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
+}
+
+.brand-subtitle {
+  font-size: var(--text-xs);
+  color: var(--gray-500);
   font-weight: 500;
 }
 
@@ -377,52 +442,91 @@ defineExpose({
 .main-content {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: var(--space-8);
 }
 
-/* 标题区域 */
-.section-header {
-  text-align: center;
-  margin-bottom: 3rem;
-  padding-top: 1rem;
+/* Hero Section */
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-10);
+  padding: var(--space-8);
+  background: linear-gradient(135deg, var(--primary-50), var(--primary-100));
+  border-radius: var(--radius-2xl);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--primary-200);
 }
 
-.title {
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: #111827;
-  margin-bottom: 0.75rem;
-  letter-spacing: -0.03em;
+.hero-content {
+  flex: 1;
+  z-index: 1;
 }
 
-.subtitle {
-  font-size: 1.125rem;
-  color: #6b7280;
-  font-weight: 400;
-  line-height: 1.6;
+.hero-title {
+  font-size: var(--text-3xl);
+  font-weight: 900;
+  color: var(--primary-900);
+  margin-bottom: var(--space-3);
+  line-height: 1.1;
+}
+
+.title-highlight {
+  background: linear-gradient(135deg, var(--primary-600), var(--primary-800));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: var(--text-lg);
+  color: var(--gray-600);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.hero-decoration {
+  position: absolute;
+  right: -50px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+.decoration-circle {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, var(--primary-300), transparent);
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.6;
+  animation: pulse 4s ease-in-out infinite;
 }
 
 /* 方法卡片网格 */
 .method-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-6);
+  margin-bottom: var(--space-10);
 }
 
-/* 方法卡片 */
+/* 方法卡片 - 玻璃拟态 */
 .method-card {
-  display: flex;
-  align-items: center;
-  background: white;
-  border: 2px solid #e5e7eb;
-  border-radius: 16px;
-  padding: 1.5rem;
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all var(--duration-normal) cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
-  gap: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  box-shadow: var(--card-shadow);
 }
 
 .method-card::before {
@@ -432,9 +536,9 @@ defineExpose({
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(147, 51, 234, 0.05));
+  background: linear-gradient(135deg, var(--primary-50), transparent);
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity var(--duration-normal) ease;
   z-index: 0;
 }
 
@@ -443,99 +547,104 @@ defineExpose({
 }
 
 .method-card:hover {
-  border-color: #3b82f6;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15);
+  transform: translateY(-4px);
+  box-shadow: var(--card-shadow-hover);
+  border-color: var(--primary-300);
 }
 
 .method-card.is-active {
-  transform: scale(0.98);
-  border-color: #2563eb;
+  transform: translateY(-2px) scale(0.98);
+  border-color: var(--primary-600);
 }
 
-.method-card:focus {
-  outline: 2px solid #3b82f6;
+.method-card:focus-visible {
+  outline: 2px solid var(--primary-500);
   outline-offset: 2px;
 }
 
-.method-card > * {
-  position: relative;
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   z-index: 1;
 }
 
-/* 卡片图标 */
 .card-icon {
-  flex-shrink: 0;
-  width: 64px;
-  height: 64px;
-  border-radius: 12px;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-lg);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
-  font-size: 1rem;
+  font-weight: 800;
+  font-size: var(--text-sm);
   color: white;
   letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .ahp-icon {
-  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  background: linear-gradient(135deg, var(--primary-500), var(--primary-700));
 }
 
 .ewm-icon {
-  background: linear-gradient(135deg, #10b981, #059669);
+  background: linear-gradient(135deg, var(--success-500), var(--success-600));
 }
 
 .fusion-icon {
-  background: linear-gradient(135deg, #f59e0b, #d97706);
+  background: linear-gradient(135deg, var(--warning-500), var(--warning-600));
 }
 
-.icon-text {
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+.card-badge {
+  background: var(--primary-100);
+  color: var(--primary-700);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-/* 卡片内容 */
 .card-content {
-  flex: 1;
-  min-width: 0;
+  z-index: 1;
 }
 
 .card-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #111827;
-  margin-bottom: 0.5rem;
-  line-height: 1.3;
+  font-size: var(--text-xl);
+  font-weight: 800;
+  color: var(--gray-900);
+  margin-bottom: var(--space-2);
+  line-height: 1.2;
 }
 
 .card-description {
-  font-size: 0.875rem;
-  color: #6b7280;
+  font-size: var(--text-sm);
+  color: var(--gray-600);
   line-height: 1.5;
-  margin-bottom: 0.75rem;
+  margin-bottom: var(--space-3);
 }
 
-/* 卡片标签 */
 .card-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: var(--space-2);
 }
 
 .tag {
-  font-size: 0.75rem;
-  padding: 0.25rem 0.625rem;
-  border-radius: 6px;
-  background: #f3f4f6;
-  color: #4b5563;
-  font-weight: 500;
-  border: 1px solid #e5e7eb;
+  font-size: var(--text-xs);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  background: var(--gray-100);
+  color: var(--gray-700);
+  font-weight: 600;
+  border: 1px solid var(--gray-200);
 }
 
 .tag.tag-primary {
-  background: #dbeafe;
-  color: #1e40af;
-  border-color: #bfdbfe;
+  background: var(--primary-100);
+  color: var(--primary-800);
+  border-color: var(--primary-200);
 }
 
 .tag.tag-success {
@@ -550,91 +659,111 @@ defineExpose({
   border-color: #fde68a;
 }
 
-/* 卡片箭头 */
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--gray-200);
+}
+
+.card-action {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--primary-600);
+}
+
 .card-arrow {
-  flex-shrink: 0;
-  font-size: 1.5rem;
-  color: #9ca3af;
-  font-weight: 300;
-  transition: all 0.3s ease;
-  margin-left: 0.5rem;
+  color: var(--primary-600);
+  font-size: var(--text-lg);
+  transition: transform var(--duration-normal) ease;
 }
 
 .method-card:hover .card-arrow {
-  color: #3b82f6;
   transform: translateX(4px);
 }
 
 /* 信息区域 */
 .info-section {
-  margin-top: 2rem;
-  padding-top: 2rem;
-  border-top: 1px solid #e5e7eb;
+  margin-top: var(--space-8);
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--gray-200);
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-4);
 }
 
 .info-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
-  background: linear-gradient(135deg, #f0f9ff, #f5f3ff);
-  border: 1px solid #dbeafe;
-  border-radius: 12px;
-  padding: 1.25rem;
+  gap: var(--space-4);
+  transition: all var(--duration-normal) ease;
+}
+
+.info-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--card-shadow-hover);
 }
 
 .info-icon {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   flex-shrink: 0;
   line-height: 1;
 }
 
-.info-text {
+.info-content {
   flex: 1;
 }
 
 .info-title {
-  font-size: 1rem;
+  font-size: var(--text-base);
   font-weight: 700;
-  color: #1e40af;
-  margin-bottom: 0.5rem;
+  color: var(--gray-900);
+  margin-bottom: var(--space-1);
 }
 
-.info-list {
-  font-size: 0.875rem;
-  color: #4b5563;
-  line-height: 1.8;
-}
-
-.info-list div {
-  margin-bottom: 0.25rem;
+.info-text {
+  font-size: var(--text-sm);
+  color: var(--gray-600);
+  line-height: 1.5;
 }
 
 /* 返回按钮容器 */
 .back-button-container {
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-6);
 }
 
 .back-button {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.25rem;
-  background: white;
-  border: 2px solid #e5e7eb;
-  border-radius: 10px;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  color: #374151;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-5);
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--gray-700);
   cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: all var(--duration-normal) ease;
+  box-shadow: var(--card-shadow);
 }
 
 .back-button:hover {
-  border-color: #3b82f6;
-  color: #3b82f6;
+  border-color: var(--primary-400);
+  color: var(--primary-600);
   transform: translateX(-2px);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+  box-shadow: var(--card-shadow-hover);
 }
 
 .back-button:active {
@@ -642,23 +771,25 @@ defineExpose({
 }
 
 .back-icon {
-  font-size: 1.125rem;
-  font-weight: 700;
+  font-size: var(--text-lg);
+  font-weight: 800;
 }
 
 /* 组件包装器 */
 .component-wrapper {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: var(--space-8);
 }
 
 .component-container {
-  background: white;
-  border-radius: 16px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e5e7eb;
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-xl);
+  padding: var(--space-6);
+  box-shadow: var(--card-shadow-lg);
+  border: 1px solid var(--card-border);
+  animation: slideUp var(--duration-normal) ease-out;
 }
 
 /* 动画 */
@@ -673,6 +804,17 @@ defineExpose({
   }
 }
 
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 @keyframes spin {
   from {
     transform: rotate(0deg);
@@ -682,116 +824,197 @@ defineExpose({
   }
 }
 
-/* 响应式优化（不使用 media query，使用相对单位和弹性布局） */
-.main-content {
-  padding: 1.5rem;
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
 }
 
-.nav-content {
-  padding: 1rem 1.5rem;
-}
-
-.method-card {
-  padding: 1.25rem;
-  gap: 1rem;
-}
-
-.card-icon {
-  width: 56px;
-  height: 56px;
-  font-size: 0.875rem;
-}
-
-.card-title {
-  font-size: 1.125rem;
-}
-
-.title {
-  font-size: 2rem;
-}
-
-.subtitle {
-  font-size: 1rem;
-}
-
-/* 暗色模式支持（可选） */
+/* 暗色模式支持 */
 @media (prefers-color-scheme: dark) {
-  .content-area {
-    background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+  .loading-overlay {
+    background: rgba(15, 23, 42, 0.8);
   }
-  
-  .nav-bar {
-    background: #1f2937;
-    border-color: #374151;
-  }
-  
-  .nav-title {
-    color: #f9fafb;
-  }
-  
-  .nav-subtitle {
-    color: #9ca3af;
-  }
-  
-  .method-card {
-    background: #1f2937;
-    border-color: #374151;
-  }
-  
-  .card-title {
-    color: #f9fafb;
-  }
-  
-  .card-description {
-    color: #9ca3af;
-  }
-  
-  .tag {
-    background: #374151;
-    color: #d1d5db;
-    border-color: #4b5563;
-  }
-  
-  .info-card {
-    background: linear-gradient(135deg, #1e3a8a, #4c1d95);
-    border-color: #1e40af;
-  }
-  
-  .info-title {
-    color: #dbeafe;
-  }
-  
-  .info-list {
-    color: #d1d5db;
-  }
-  
-  .back-button {
-    background: #1f2937;
-    border-color: #374151;
-    color: #d1d5db;
-  }
-  
-  .back-button:hover {
-    border-color: #60a5fa;
-    color: #60a5fa;
-  }
-  
-  .component-container {
-    background: #1f2937;
-    border-color: #374151;
-  }
-  
+
   .loading-content {
-    background: #1f2937;
-    color: #f9fafb;
+    background: var(--dark-card-bg);
+    border-color: var(--dark-card-border);
   }
-  
+
   .loading-text {
-    color: #f9fafb;
+    color: var(--dark-text-primary);
   }
-  
+
   .loading-subtext {
-    color: #9ca3af;
+    color: var(--dark-text-secondary);
+  }
+
+  .nav-bar {
+    background: var(--dark-card-bg);
+    border-bottom-color: var(--dark-card-border);
+  }
+
+  .brand-title {
+    background: linear-gradient(135deg, var(--primary-300), var(--primary-500));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .brand-subtitle {
+    color: var(--gray-400);
+  }
+
+  .hero-section {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(147, 51, 234, 0.1));
+    border-color: rgba(59, 130, 246, 0.2);
+  }
+
+  .hero-title {
+    color: var(--primary-200);
+  }
+
+  .hero-subtitle {
+    color: var(--gray-400);
+  }
+
+  .method-card {
+    background: var(--dark-card-bg);
+    border-color: var(--dark-card-border);
+  }
+
+  .method-card::before {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), transparent);
+  }
+
+  .card-title {
+    color: var(--dark-text-primary);
+  }
+
+  .card-description {
+    color: var(--dark-text-secondary);
+  }
+
+  .tag {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--dark-text-secondary);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .card-footer {
+    border-top-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .info-card {
+    background: var(--dark-card-bg);
+    border-color: var(--dark-card-border);
+  }
+
+  .info-title {
+    color: var(--dark-text-primary);
+  }
+
+  .info-text {
+    color: var(--dark-text-secondary);
+  }
+
+  .back-button {
+    background: var(--dark-card-bg);
+    border-color: var(--dark-card-border);
+    color: var(--dark-text-secondary);
+  }
+
+  .back-button:hover {
+    border-color: var(--primary-400);
+    color: var(--primary-300);
+  }
+
+  .component-container {
+    background: var(--dark-card-bg);
+    border-color: var(--dark-card-border);
+  }
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+  .nav-content {
+    padding: var(--space-4) var(--space-4);
+  }
+
+  .brand-title {
+    font-size: var(--text-lg);
+  }
+
+  .main-content {
+    padding: var(--space-4);
+  }
+
+  .hero-section {
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--space-5);
+    text-align: center;
+  }
+
+  .hero-decoration {
+    position: static;
+    transform: none;
+    margin-top: var(--space-4);
+  }
+
+  .decoration-circle {
+    width: 120px;
+    height: 120px;
+  }
+
+  .method-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .component-wrapper {
+    padding: var(--space-4);
+  }
+
+  .component-container {
+    padding: var(--space-4);
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-brand {
+    gap: var(--space-2);
+  }
+
+  .brand-icon {
+    font-size: 1.5rem;
+  }
+
+  .hero-title {
+    font-size: var(--text-2xl);
+  }
+
+  .method-card {
+    padding: var(--space-4);
+  }
+
+  .card-icon {
+    width: 48px;
+    height: 48px;
+    font-size: var(--text-xs);
+  }
+
+  .card-title {
+    font-size: var(--text-lg);
   }
 }
 </style>
